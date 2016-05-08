@@ -11,6 +11,13 @@
       <property name="javax.persistence.jdbc.url" value="jdbc:derby:C:\Users\gotassinari\MyDB;create=true"/>
       <property name="javax.persistence.jdbc.user" value="CHINAMERICA"/>
       <property name="javax.persistence.jdbc.password" value="chinamerica"/>
+      
+		<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect" />
+		 <property name="hibernate.show_sql" value="true" />
+  <property name="hibernate.format_sql" value="true" />
+
+  <!--  atualiza o banco, gera as tabelas se for preciso -->
+  <property name="hibernate.hbm2ddl.auto" value="update" />
       <!--  
         if you just created the database, maybe
         you want hibernate to create a schema for you

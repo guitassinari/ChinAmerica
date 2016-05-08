@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,6 +12,7 @@ public class User {
 	private String name;
 	private String cpf;
 
+	@Column(name="name", nullable=false)
 	public String getName() {
 		return name;
 	}
@@ -20,6 +22,7 @@ public class User {
 	}
 
 	@Id
+	@Column(name="cpf", nullable=false, unique=true)
 	public String getCpf() {
 		return cpf;
 	}
