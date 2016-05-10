@@ -30,12 +30,12 @@ public class UserDAO {
         }
     }
 
-    public void deleteUser(int userid) {
+    public void deleteUser(String userCpf) {
         Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             trns = session.beginTransaction();
-            User user = (User) session.load(User.class, new Integer(userid));
+            User user = (User) session.load(User.class, (userCpf));
             session.delete(user);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
@@ -120,4 +120,6 @@ public class UserDAO {
         }
         return user;
     }
+    
+
 }
