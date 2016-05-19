@@ -50,7 +50,7 @@ public class User {
 		this.lastname = lastname;
 	}
 
-	@Column(name = "email", nullable = false, unique = true)
+	@Column(name = "email", unique = true)
 	public String getEmail() {
 		return email;
 	}
@@ -77,7 +77,7 @@ public class User {
 		this.password = password;
 	}
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name")
 	public String getName() {
 		return name;
 	}
