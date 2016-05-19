@@ -10,11 +10,11 @@ import org.hibernate.Transaction;
 import model.User;
 import database.HibernateUtil;
 
-public class UserDAO {
+public class UserDAO extends DAO{
 
     public void addUser(User user) {
         Transaction trns = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = initSession();
         try {
             trns = session.beginTransaction();
             session.save(user);
@@ -25,8 +25,7 @@ public class UserDAO {
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+            endSession();
         }
     }
 

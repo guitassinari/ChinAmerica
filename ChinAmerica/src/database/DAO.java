@@ -10,6 +10,19 @@ public abstract class DAO {
 	 * IMplementar a preparação da session, rollback, transaction, fechar a session
 	 */
 	
+	protected Session initSession(){
+		if(session == null){
+			session = HibernateUtil.getSessionFactory().openSession();
+		}
+		
+		return session;
+	}
+	
+	protected void endSession(){
+        session.flush();
+        session.close();
+	}
+	
 	/**
 	 * 
 	 * Before e after em todas as DAOs???
@@ -23,16 +36,4 @@ public abstract class DAO {
 	 * 
 	 */
 	
-	public Session getSession(){
-		if(session == null){
-			session = HibernateUtil.getSessionFactory().openSession();
-		}
-		
-		return session;
-	}
-	
-	public void endSession(){
-        session.flush();
-        session.close();
-	}
 }
