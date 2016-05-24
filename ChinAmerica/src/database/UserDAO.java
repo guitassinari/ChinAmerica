@@ -31,7 +31,7 @@ public class UserDAO extends DAO{
 
     public void deleteUser(String userCpf) {
         Transaction trns = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = initSession();
         try {
             trns = session.beginTransaction();
             User user = (User) session.load(User.class, (userCpf));
@@ -43,14 +43,13 @@ public class UserDAO extends DAO{
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+        	endSession();
         }
     }
 
     public void updateUser(User user) {
         Transaction trns = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = initSession();
         try {
             trns = session.beginTransaction();
             session.update(user);
@@ -61,23 +60,21 @@ public class UserDAO extends DAO{
             }
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+            endSession();
         }
     }
 
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<User>();
         Transaction trns = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = initSession();
         try {
             trns = session.beginTransaction();
             users = session.createQuery("from User").list();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+            endSession();
         }
         return users;
     }
@@ -85,7 +82,7 @@ public class UserDAO extends DAO{
     public User getUserById(int userid) {
         User user = null;
         Transaction trns = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = initSession();
         try {
             trns = session.beginTransaction();
             String queryString = "from User where id = :id";
@@ -95,8 +92,7 @@ public class UserDAO extends DAO{
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+            endSession();
         }
         return user;
     }
@@ -104,7 +100,7 @@ public class UserDAO extends DAO{
     public User getUserByCpf(String userCpf) {
         User user = null;
         Transaction trns = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = initSession();
         try {
             trns = session.beginTransaction();
             String queryString = "from User where cpf = :cpf";
@@ -114,8 +110,7 @@ public class UserDAO extends DAO{
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-            session.flush();
-            session.close();
+        	endSession();
         }
         return user;
     }
