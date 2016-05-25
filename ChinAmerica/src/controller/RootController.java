@@ -29,7 +29,7 @@ public class RootController extends Application implements Initializable {
 	}
 	
 	private void openRootWindow() {
-		try{
+		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(RootController.class.getResource("../view/RootWindow.fxml"));
 			rootWindow = (BorderPane) loader.load();

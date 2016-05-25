@@ -8,28 +8,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Pane maxHeight="388.0" maxWidth="372.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="372.0" style="-fx-background-color: #333333; -fx-border-color: #666666; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="loginAndSignupPane" maxHeight="388.0" maxWidth="372.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="372.0" style="-fx-background-color: #333333; -fx-border-color: #666666; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginAndSignupController">
    <children>
       <Group>
          <children>
-            <PasswordField layoutX="20.0" layoutY="333.0" prefHeight="36.0" prefWidth="237.0" promptText="Confirme sua senha" />
+            <PasswordField fx:id="passwordConfirmSignup" layoutX="20.0" layoutY="333.0" prefHeight="36.0" prefWidth="237.0" promptText="Confirme sua senha" />
             <Text fill="WHITE" layoutX="20.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entre" wrappingWidth="158.443359375">
                <font>
                   <Font name="Segoe UI" size="38.0" />
                </font>
             </Text>
-            <Button layoutX="185.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" text="Esqueci minha senha" />
-            <PasswordField layoutX="20.0" layoutY="287.0" prefHeight="36.0" prefWidth="237.0" promptText="Senha" />
-            <TextField layoutX="20.0" layoutY="68.0" prefHeight="36.0" prefWidth="237.0" promptText="CPF" />
+            <Button fx:id="forgotPasswordButton" layoutX="185.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" text="Esqueci minha senha" />
+            <PasswordField fx:id="passwordSignup" layoutX="20.0" layoutY="287.0" prefHeight="36.0" prefWidth="237.0" promptText="Senha" />
+            <TextField fx:id="cpfLogin" layoutX="20.0" layoutY="68.0" prefHeight="36.0" prefWidth="237.0" promptText="CPF" />
             <Text fill="WHITE" layoutX="20.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ou cadastre-se" wrappingWidth="332.443359375">
                <font>
                   <Font name="Segoe UI" size="38.0" />
                </font>
             </Text>
-            <Button layoutX="264.0" layoutY="68.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="86.0" text="Entrar" />
-            <TextField layoutX="20.0" layoutY="241.0" prefHeight="36.0" prefWidth="237.0" promptText="CPF" />
-            <Button layoutX="264.0" layoutY="241.0" mnemonicParsing="false" prefHeight="129.0" prefWidth="86.0" text="Cadastrar" />
-            <PasswordField layoutX="20.0" layoutY="114.0" prefHeight="36.0" prefWidth="237.0" promptText="Senha" />
+            <Button fx:id="loginButton" layoutX="264.0" layoutY="68.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="86.0" text="Entrar" />
+            <TextField fx:id="cpfSignup" layoutX="20.0" layoutY="241.0" prefHeight="36.0" prefWidth="237.0" promptText="CPF" />
+            <Button fx:id="signupButton" layoutX="264.0" layoutY="241.0" mnemonicParsing="false" prefHeight="129.0" prefWidth="86.0" text="Cadastrar" />
+            <PasswordField fx:id="passwordLogin" layoutX="20.0" layoutY="114.0" prefHeight="36.0" prefWidth="237.0" promptText="Senha" />
          </children>
       </Group>
    </children>
