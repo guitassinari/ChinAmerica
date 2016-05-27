@@ -2,6 +2,8 @@ package model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +13,7 @@ public class User {
 
 	private static final int[] pesoCPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
 	
+	private UserType userType;
 	private String name;
 	private String lastname;
 	private String cpf;
@@ -22,8 +25,6 @@ public class User {
 		
 	}
 	
-
-
 	public User(String name, String lastname, String cpf, String email, String adress, String password) {
 		super();
 		this.name = name;
@@ -126,5 +127,14 @@ public class User {
       Integer digito2 = calcularDigito(cpf.substring(0,9) + digito1, pesoCPF);
       return cpf.equals(cpf.substring(0,9) + digito1.toString() + digito2.toString());
    }
+
+   @Enumerated(EnumType.ORDINAL)
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
 	   
 }

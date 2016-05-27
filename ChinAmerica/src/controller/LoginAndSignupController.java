@@ -11,8 +11,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import model.Client;
 import model.User;
+import model.UserType;
 
 public class LoginAndSignupController implements Initializable {
 	
@@ -32,30 +32,30 @@ public class LoginAndSignupController implements Initializable {
 		String cpf = cpfSignup.getText();
 		String password = passwordSignup.getText();
 		String confirmPassword = passwordConfirmSignup.getText();
-		Client client = new Client();
+		User client = new User();
 		
 		try{
 			client.setCpf(cpf);
 			
 			if(password.equals(confirmPassword)){
 				client.setPassword(password);
+				client.setUserType(UserType.CLIENT);
 				UserDAO userDao = new UserDAO();
 				userDao.addUser(client);
 				
 				setLoggedUser(client);
+				enableClientButtons();
+				showUserView();
 			} else {
 				alert("Senhas incompativeis!", "Suas senhas não conferem, por favor, verifique-as e tente novamente", AlertType.WARNING);
-
 			}		
 			
 		} catch(IllegalArgumentException ex) {
-			
+			ex.printStackTrace();
+			alert("CPF inválido!", "Verifique seu CPF e tente novamente! ", AlertType.WARNING);
 		}  catch(Exception ex) {
 			ex.printStackTrace();
-			
 			alert("Oops!", "Algo deu errado! Verifique suas informações e tente novamente!", AlertType.ERROR);
-			
-			//TODO: Problema com cadastros seguidos de usuarios
 		} 
 	}
 	
@@ -67,9 +67,16 @@ public class LoginAndSignupController implements Initializable {
 		alert.showAndWait();
 	}
 	
+	private void enableClientButtons(){
+		//TODO mostrar na tela inicial os boões de clientes(realizar pedido, pagar pedido, historico de pedidos...)
+	}
+	
+	public void showUserView(){
+		//TODO Criar pagina de usuario (edição de informações como endereço,senha, e etc...
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
 		
 	}
 
