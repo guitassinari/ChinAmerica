@@ -20,7 +20,6 @@ public class LoginAndSignupController implements Initializable {
 	@FXML private TextField cpfSignup;
 	@FXML private PasswordField passwordSignup;
 	@FXML private PasswordField passwordConfirmSignup;
-	private User  loggedUser;
 	
 	@FXML
 	public void loginUser(){
@@ -67,10 +66,6 @@ public class LoginAndSignupController implements Initializable {
 		alert.showAndWait();
 	}
 	
-	private void enableClientButtons(){
-		//TODO mostrar na tela inicial os boões de clientes(realizar pedido, pagar pedido, historico de pedidos...)
-	}
-	
 	public void showUserView(){
 		//TODO Criar pagina de usuario (edição de informações como endereço,senha, e etc...
 	}
@@ -80,12 +75,9 @@ public class LoginAndSignupController implements Initializable {
 		
 	}
 
-	public User getLoggedUser() {
-		return loggedUser;
-	}
-
 	public void setLoggedUser(User loggedUser) {
-		this.loggedUser = loggedUser;
+		RootController.setLoggedUser(loggedUser);
+		
 	}
 
 }
