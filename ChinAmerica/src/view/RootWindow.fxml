@@ -7,7 +7,7 @@
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
    <top>
-      <HBox prefHeight="43.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="buttonsMenu" prefHeight="43.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="openLoginSignupButton" mnemonicParsing="false" prefHeight="43.0" prefWidth="100.0" onAction="#showLoginAndSignup"  text="Login/Cadastro" />
             <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="85.0" text="Cardápio" />

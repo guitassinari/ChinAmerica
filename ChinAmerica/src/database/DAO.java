@@ -11,9 +11,7 @@ public abstract class DAO {
 	 */
 	
 	protected Session initSession(){
-		if(session == null){
-			session = HibernateUtil.getSessionFactory().openSession();
-		}
+		session = HibernateUtil.getSessionFactory().openSession();
 		
 		return session;
 	}
