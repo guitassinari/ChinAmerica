@@ -98,7 +98,7 @@ public class RootController extends Application implements Initializable {
 	}
 	
 	private static void showLoggedUserButtons(){
-		profileButton = new Button();
+		//profileButton = new Button();
 	}
 	
 	private static void showClientButtons(){

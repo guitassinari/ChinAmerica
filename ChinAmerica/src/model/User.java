@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import database.UserDAO;
+
 @Entity
 @Table(name = "USERS")
 public class User {
@@ -135,6 +137,18 @@ public class User {
 
 	public void setUserType(UserType userType) {
 		this.userType = userType;
+	}
+	
+	public boolean alreadyExists(){
+		UserDAO dao = new UserDAO();
+		
+		User user = dao.getUserByCpf(cpf);
+		
+		if(user == null){
+			return false;
+		}
+		
+		return true;
 	}
 	   
 }

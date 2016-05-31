@@ -32,30 +32,36 @@ public class LoginAndSignupController implements Initializable {
 		String password = passwordSignup.getText();
 		String confirmPassword = passwordConfirmSignup.getText();
 		User client = new User();
+		UserDAO userDao = new UserDAO();
 		
-		try{
-			client.setCpf(cpf);
-			
-			if(password.equals(confirmPassword)){
-				client.setPassword(password);
-				client.setUserType(UserType.CLIENT);
-				UserDAO userDao = new UserDAO();
-				userDao.addUser(client);
+		client.setCpf(cpf);
+		
+		if(!client.alreadyExists()){	
+			try{				
+				if(!password.isEmpty() && password.equals(confirmPassword)){
+					client.setPassword(password);
+					client.setUserType(UserType.CLIENT);
+					userDao.addUser(client);
+					
+					alert("Usuário cadastrado com sucesso!","Bem vindo ao ChinAmérica!",AlertType.CONFIRMATION);
+					
+					//setLoggedUser(client);
+					//enableClientButtons();
+					//showUserView();
+				} else {
+					alert("Erro na senha", "Verifique suas senhas e tente novamente.", AlertType.WARNING);
+				}		
 				
-				setLoggedUser(client);
-				enableClientButtons();
-				showUserView();
-			} else {
-				alert("Senhas incompativeis!", "Suas senhas não conferem, por favor, verifique-as e tente novamente", AlertType.WARNING);
-			}		
-			
-		} catch(IllegalArgumentException ex) {
-			ex.printStackTrace();
-			alert("CPF inválido!", "Verifique seu CPF e tente novamente! ", AlertType.WARNING);
-		}  catch(Exception ex) {
-			ex.printStackTrace();
-			alert("Oops!", "Algo deu errado! Verifique suas informações e tente novamente!", AlertType.ERROR);
-		} 
+			} catch(IllegalArgumentException ex) {
+				ex.printStackTrace();
+				alert("CPF inválido!", "Verifique seu CPF e tente novamente! ", AlertType.WARNING);
+			}  catch(Exception ex) {
+				ex.printStackTrace();
+				alert("Oops!", "Algo deu errado! Verifique suas informações e tente novamente!", AlertType.ERROR);
+			}
+		} else {
+			alert("Usuário já cadastrado!", "Faça seu login ou, clique em 'esqueci minha senha' se esqueceu sua senha!", AlertType.WARNING);
+		}
 	}
 	
 	public void alert(String alertTitle, String alertText, AlertType alertType){
