@@ -13,7 +13,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -127,4 +129,11 @@ public class RootController extends Application implements Initializable {
 		updateButtonsMenu();
 	}
 
+	public static  void alert(String alertTitle, String alertText, AlertType alertType){
+		Alert alert = new Alert(alertType);
+		alert.setTitle(alertTitle);
+		alert.setHeaderText(null);
+		alert.setContentText(alertText);
+		alert.showAndWait();
+	}
 }
