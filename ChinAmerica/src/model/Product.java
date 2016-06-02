@@ -45,6 +45,7 @@ public class Product {
 		this.description = description;
 	}
 
+	@Column(name="PRODUCT_TYPE", nullable=false)
 	@Enumerated(EnumType.ORDINAL)
 	public ProductType getProductType() {
 		return productType;
@@ -54,7 +55,7 @@ public class Product {
 		this.productType = productType;
 	}
 
-	@Column(name="price")
+	@Column(name="price", nullable=false)
 	public Float getPrice() {
 		return price;
 	}
