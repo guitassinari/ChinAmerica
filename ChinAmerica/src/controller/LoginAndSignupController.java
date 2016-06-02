@@ -90,10 +90,6 @@ public class LoginAndSignupController implements Initializable {
 		alert.showAndWait();
 	}
 	
-	public void showUserView(){
-		//TODO Criar pagina de usuario (edição de informações como endereço,senha, e etc...
-	}
-	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		

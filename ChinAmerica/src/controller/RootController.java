@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import database.HibernateUtil;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
@@ -78,8 +79,9 @@ public class RootController extends Application implements Initializable {
 	}
 
 	private  void updateButtonsMenu(){
-		removeAllCustomUserButtons();
-		
+		//TODO: Remover todos os botões do menu
+		buttonsMenu.getChildren().removeAll();
+		showGeneralUserButtons();
 		if(loggedUser != null){
 			if(loggedUser.getUserType().equals(UserType.CLIENT)){
 				showClientButtons();
@@ -91,6 +93,11 @@ public class RootController extends Application implements Initializable {
 		}
 	}
 	
+	private void showGeneralUserButtons() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private  void showClientButtons(){
 		profileButton = new Button("Perfil");
 		profileButton.setPrefHeight(47);
@@ -105,10 +112,6 @@ public class RootController extends Application implements Initializable {
 	
 	private  void showManagerButtons(){
 
-	}
-	
-	private  void removeAllCustomUserButtons(){
-		
 	}
 
 	private void showProfile(){
