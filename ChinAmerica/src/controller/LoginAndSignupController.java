@@ -17,20 +17,40 @@ import model.UserType;
 public class LoginAndSignupController implements Initializable {
 	
 	@FXML private Pane loginAndSignupPane;
-	@FXML private TextField cpfSignup;
-	@FXML private PasswordField passwordSignup;
-	@FXML private PasswordField passwordConfirmSignup;
+	@FXML private TextField cpfLoginField;
+	@FXML private PasswordField passwordLoginField;
+	@FXML private TextField cpfSignupField;
+	@FXML private PasswordField passwordSignupField;
+	@FXML private PasswordField confirmPasswordSignupField;
+	private RootController root;
 	
 	@FXML
 	public void loginUser(){
+		User user = new User();
+		String loginCpf = cpfLoginField.getText();
+		String loginPassword = passwordLoginField.getText();
 		
+		user.setCpf(loginCpf);
+		
+		if(user.alreadyExists()){
+			UserDAO dao = new UserDAO();
+			user = dao.getUserByCpf(user.getCpf());
+			
+			if( user.getPassword().equals(loginPassword) ){
+				setLoggedUser(user);
+			} else {
+				alert("Senha incorreta", "Verifique sua senha e tente novamente", AlertType.WARNING);
+			}
+		} else {
+			alert("Usuário não cadastrado", "Verifique seus dados, ou cadastre-se abaixo.", AlertType.WARNING);
+		}
 	}
 	
 	@FXML
 	public void signupUser(){
-		String cpf = cpfSignup.getText();
-		String password = passwordSignup.getText();
-		String confirmPassword = passwordConfirmSignup.getText();
+		String cpf = cpfSignupField.getText();
+		String password = passwordSignupField.getText();
+		String confirmPassword = confirmPasswordSignupField.getText();
 		User client = new User();
 		UserDAO userDao = new UserDAO();
 		
@@ -45,9 +65,7 @@ public class LoginAndSignupController implements Initializable {
 					
 					alert("Usuário cadastrado com sucesso!","Bem vindo ao ChinAmérica!",AlertType.CONFIRMATION);
 					
-					//setLoggedUser(client);
-					//enableClientButtons();
-					//showUserView();
+					setLoggedUser(client);
 				} else {
 					alert("Erro na senha", "Verifique suas senhas e tente novamente.", AlertType.WARNING);
 				}		
@@ -82,8 +100,15 @@ public class LoginAndSignupController implements Initializable {
 	}
 
 	public void setLoggedUser(User loggedUser) {
-		RootController.setLoggedUser(loggedUser);
-		
+		root.setLoggedUser(loggedUser);
+	}
+
+	public RootController getRoot() {
+		return root;
+	}
+
+	public void setRoot(RootController root) {
+		this.root = root;
 	}
 
 }
