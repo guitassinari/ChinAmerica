@@ -1,15 +1,18 @@
 package controller;
 
-import java.awt.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -28,9 +31,9 @@ public class RootController extends Application implements Initializable {
 	private Stage primaryStage;
 	private BorderPane rootWindow;
 
-	private static User loggedUser;
+	private  User loggedUser;
 
-	public static void main(String[] args) {
+	public static  void main(String[] args) {
 		launch(args);
 	}
 	
@@ -51,7 +54,7 @@ public class RootController extends Application implements Initializable {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(RootController.class.getResource("../view/RootWindow.fxml"));
 			rootWindow = (BorderPane) loader.load();
-
+	
 			Scene scene = new Scene(rootWindow);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -64,27 +67,20 @@ public class RootController extends Application implements Initializable {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(RootController.class.getResource("../view/LoginAndSignup.fxml"));
+			LoginAndSignupController loginAndSignupController = new LoginAndSignupController();
+			loginAndSignupController.setRoot(this);
+			loader.setController(loginAndSignupController);
 			Pane loginAndSignup = (Pane) loader.load();
 			stackPane.getChildren().add(loginAndSignup);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static User getLoggedUser() {
-		return loggedUser;
-	}
-
-	public static void setLoggedUser(User newLoggedUser) {
-		loggedUser = newLoggedUser;
-		updateButtonsMenu();
-	}
-	
-	private static void updateButtonsMenu(){
+	private  void updateButtonsMenu(){
 		removeAllCustomUserButtons();
 		
 		if(loggedUser != null){
-			showLoggedUserButtons();
 			if(loggedUser.getUserType().equals(UserType.CLIENT)){
 				showClientButtons();
 			}
@@ -93,24 +89,39 @@ public class RootController extends Application implements Initializable {
 				showManagerButtons();
 			}
 		}
+	}
+	
+	private  void showClientButtons(){
+		profileButton = new Button("Perfil");
+		profileButton.setPrefHeight(47);
+		profileButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				showProfile();
+			}
+		});
+		buttonsMenu.getChildren().add(profileButton);
+	}
+	
+	private  void showManagerButtons(){
 
+	}
+	
+	private  void removeAllCustomUserButtons(){
+		
+	}
+
+	private void showProfile(){
 		
 	}
 	
-	private static void showLoggedUserButtons(){
-		//profileButton = new Button();
+	public  User getLoggedUser() {
+		return loggedUser;
 	}
-	
-	private static void showClientButtons(){
-		
-	}
-	
-	private static void showManagerButtons(){
-		
-	}
-	
-	private static void removeAllCustomUserButtons(){
-		
+
+	public  void setLoggedUser(User newLoggedUser) {
+		loggedUser = newLoggedUser;
+		updateButtonsMenu();
 	}
 
 }
