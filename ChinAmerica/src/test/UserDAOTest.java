@@ -1,14 +1,16 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-public class UserDAOTest {
+import model.User;
 
+public class UserDAOTest {
+		
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testAddUser(){
+		
 	}
 
 }

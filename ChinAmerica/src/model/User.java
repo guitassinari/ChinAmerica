@@ -85,6 +85,10 @@ public class User {
 			throw new IllegalArgumentException();
 		}
 	}
+	
+	public void setPassword(String password) {
+			this.password = password;
+	}
 
 	@Column(name = "name")
 	public String getName() {

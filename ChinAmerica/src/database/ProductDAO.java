@@ -28,12 +28,12 @@ public class ProductDAO extends DAO {
         }
     }
 
-    public void deleteProduct(String ProductCpf) {
+    public void deleteProduct(Integer id) {
         Transaction trns = null;
         Session session = initSession();
         try {
             trns = session.beginTransaction();
-            Product Product = (Product) session.load(Product.class, (ProductCpf));
+            Product Product = (Product) session.load(Product.class, (id));
             session.delete(Product);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
@@ -87,6 +87,24 @@ public class ProductDAO extends DAO {
             String queryString = "from Product where id = :id";
             Query query = session.createQuery(queryString);
             query.setInteger("id", Productid);
+            product = (Product) query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            endSession();
+        }
+        return product;
+    }
+    
+    public Product getProductByName(String name){
+    	Product product = null;
+        Transaction trns = null;
+        Session session = initSession();
+        try {
+            trns = session.beginTransaction();
+            String queryString = "from Product where name = :name";
+            Query query = session.createQuery(queryString);
+            query.setString("name", name);
             product = (Product) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();
