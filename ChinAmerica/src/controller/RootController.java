@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import database.HibernateUtil;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
@@ -12,7 +13,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -78,8 +81,9 @@ public class RootController extends Application implements Initializable {
 	}
 
 	private  void updateButtonsMenu(){
-		removeAllCustomUserButtons();
-		
+		//TODO: Remover todos os botões do menu
+		buttonsMenu.getChildren().removeAll();
+		showGeneralUserButtons();
 		if(loggedUser != null){
 			if(loggedUser.getUserType().equals(UserType.CLIENT)){
 				showClientButtons();
@@ -91,6 +95,11 @@ public class RootController extends Application implements Initializable {
 		}
 	}
 	
+	private void showGeneralUserButtons() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private  void showClientButtons(){
 		profileButton = new Button("Perfil");
 		profileButton.setPrefHeight(47);
@@ -106,10 +115,6 @@ public class RootController extends Application implements Initializable {
 	private  void showManagerButtons(){
 
 	}
-	
-	private  void removeAllCustomUserButtons(){
-		
-	}
 
 	private void showProfile(){
 		
@@ -124,4 +129,11 @@ public class RootController extends Application implements Initializable {
 		updateButtonsMenu();
 	}
 
+	public static  void alert(String alertTitle, String alertText, AlertType alertType){
+		Alert alert = new Alert(alertType);
+		alert.setTitle(alertTitle);
+		alert.setHeaderText(null);
+		alert.setContentText(alertText);
+		alert.showAndWait();
+	}
 }

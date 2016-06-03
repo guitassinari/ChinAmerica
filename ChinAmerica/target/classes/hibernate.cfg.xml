@@ -32,6 +32,8 @@
         <property name="hbm2ddl.auto">create</property>
 		
 		<mapping class="model.User"></mapping>
+		<mapping class="model.Product"></mapping>
+
 
     </session-factory>
  
