@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="derby-155281e7105-6eb5cd767a97fde7" provider="generic" driver="derby" name="CHINAMERICA" create-date="1465256955002" save-password="true" show-system-objects="true" read-only="false">
+		<connection server="" database="C:\Users\Guilherme\MyDB" url="jdbc:derby:C:\Users\Guilherme\MyDB" user="CHINAMERICA" password="EAwPLkBOQQQMEQde9g==" type="dev">
+			<bootstrap/>
+		</connection>
+	</data-source>
+</data-sources>

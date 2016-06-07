@@ -7,17 +7,16 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import model.User;
-import database.HibernateUtil;
+import model.Order;
 
-public class UserDAO extends DAO{
+public class OrderDAO extends DAO {
 
-    public void addUser(User user) {
+	public void addOrder(Order Order) {
         Transaction trns = null;
         Session session = initSession();
         try {
             trns = session.beginTransaction();
-            session.save(user);
+            session.save(Order);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (trns != null) {
@@ -29,13 +28,13 @@ public class UserDAO extends DAO{
         }
     }
 
-    public void deleteUser(String userCpf) {
+    public void deleteOrder(Integer id) {
         Transaction trns = null;
         Session session = initSession();
         try {
             trns = session.beginTransaction();
-            User user = (User) session.load(User.class, (userCpf));
-            session.delete(user);
+            Order Order = (Order) session.load(Order.class, (id));
+            session.delete(Order);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (trns != null) {
@@ -47,12 +46,12 @@ public class UserDAO extends DAO{
         }
     }
 
-    public void updateUser(User user) {
+    public void updateOrder(Order Order) {
         Transaction trns = null;
         Session session = initSession();
         try {
             trns = session.beginTransaction();
-            session.update(user);
+            session.update(Order);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (trns != null) {
@@ -64,37 +63,37 @@ public class UserDAO extends DAO{
         }
     }
 
-    public List<User> getAllUsers() {
-        List<User> users = new ArrayList<User>();
+    public List<Order> getAllOrders() {
+        List<Order> products = new ArrayList<Order>();
         Transaction trns = null;
         Session session = initSession();
         try {
             trns = session.beginTransaction();
-            users = session.createQuery("from User").list();
+            products = session.createQuery("from Order").list();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
             endSession();
         }
-        return users;
+        return products;
     }
-    
-    public User getUserByCpf(String userCpf) {
-        User user = null;
+
+    public Order getOrderById(int Orderid) {
+        Order order = null;
         Transaction trns = null;
         Session session = initSession();
         try {
             trns = session.beginTransaction();
-            String queryString = "from User where cpf = :cpf";
+            String queryString = "from Order where id = :id";
             Query query = session.createQuery(queryString);
-            query.setString("cpf", userCpf);
-            user = (User) query.uniqueResult();
+            query.setInteger("id", Orderid);
+            order = (Order) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-        	endSession();
+            endSession();
         }
-        return user;
+        return order;
     }
-    
+    	
 }

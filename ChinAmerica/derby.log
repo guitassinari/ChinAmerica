@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Thu Jun 02 22:28:16 BRT 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0155-13e0-023f-000004eb5790 
+Mon Jun 06 21:16:39 BRT 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0155-2837-e22e-000004ecead0 
 on database directory C:\Users\Guilherme\MyDB with class loader sun.misc.Launcher$AppClassLoader@2503dbd3 
 Loaded from file:/C:/Users/Guilherme/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
 java.vendor=Oracle Corporation

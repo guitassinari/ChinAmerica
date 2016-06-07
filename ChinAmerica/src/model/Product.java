@@ -47,7 +47,7 @@ public class Product {
 		this.description = description;
 	}
 
-	@Column(name="PRODUCT_TYPE", nullable=false)
+	@Column(name="product_type", nullable=false)
 	@Enumerated(EnumType.ORDINAL)
 	public ProductType getProductType() {
 		return productType;
