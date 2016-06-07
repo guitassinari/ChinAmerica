@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ChinAmerica
+Bundle-SymbolicName: ChinAmerica
+Bundle-Version: 1.0.0.qualifier
+Export-Package: controller,
+ database,
+ model,
+ test,
+ view

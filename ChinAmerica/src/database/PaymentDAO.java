@@ -7,17 +7,16 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import model.User;
-import database.HibernateUtil;
+import model.Payment;
 
-public class UserDAO extends DAO{
+public class PaymentDAO extends DAO {
 
-    public void addUser(User user) {
+	public void addPayment(Payment Payment) {
         Transaction trns = null;
         Session session = initSession();
         try {
             trns = session.beginTransaction();
-            session.save(user);
+            session.save(Payment);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (trns != null) {
@@ -29,13 +28,13 @@ public class UserDAO extends DAO{
         }
     }
 
-    public void deleteUser(String userCpf) {
+    public void deletePayment(Integer id) {
         Transaction trns = null;
         Session session = initSession();
         try {
             trns = session.beginTransaction();
-            User user = (User) session.load(User.class, (userCpf));
-            session.delete(user);
+            Payment Payment = (Payment) session.load(Payment.class, (id));
+            session.delete(Payment);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (trns != null) {
@@ -47,12 +46,12 @@ public class UserDAO extends DAO{
         }
     }
 
-    public void updateUser(User user) {
+    public void updatePayment(Payment Payment) {
         Transaction trns = null;
         Session session = initSession();
         try {
             trns = session.beginTransaction();
-            session.update(user);
+            session.update(Payment);
             session.getTransaction().commit();
         } catch (RuntimeException e) {
             if (trns != null) {
@@ -64,37 +63,55 @@ public class UserDAO extends DAO{
         }
     }
 
-    public List<User> getAllUsers() {
-        List<User> users = new ArrayList<User>();
+    public List<Payment> getAllPayments() {
+        List<Payment> products = new ArrayList<Payment>();
         Transaction trns = null;
         Session session = initSession();
         try {
             trns = session.beginTransaction();
-            users = session.createQuery("from User").list();
+            products = session.createQuery("from Payment").list();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
             endSession();
         }
-        return users;
+        return products;
     }
-    
-    public User getUserByCpf(String userCpf) {
-        User user = null;
+
+    public Payment getPaymentById(int Paymentid) {
+        Payment payment = null;
         Transaction trns = null;
         Session session = initSession();
         try {
             trns = session.beginTransaction();
-            String queryString = "from User where cpf = :cpf";
+            String queryString = "from Payment where id = :id";
             Query query = session.createQuery(queryString);
-            query.setString("cpf", userCpf);
-            user = (User) query.uniqueResult();
+            query.setInteger("id", Paymentid);
+            payment = (Payment) query.uniqueResult();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } finally {
-        	endSession();
+            endSession();
         }
-        return user;
+        return payment;
     }
     
+    public Payment getPaymentByOrderId(int orderId) {
+        Payment payment = null;
+        Transaction trns = null;
+        Session session = initSession();
+        try {
+            trns = session.beginTransaction();
+            String queryString = "from Payment where order_id = :id";
+            Query query = session.createQuery(queryString);
+            query.setInteger("id", orderId);
+            payment = (Payment) query.uniqueResult();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            endSession();
+        }
+        return payment;
+    }
+	
 }

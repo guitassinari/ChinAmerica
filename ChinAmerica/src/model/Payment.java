@@ -3,6 +3,7 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,7 +20,7 @@ public class Payment {
 	private User approvalManager;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	//TODO: Sequence generator
 	public Integer getId() {
 		return id;
@@ -29,7 +30,7 @@ public class Payment {
 		this.id = id;
 	}
 
-	@Column(name="value")
+	@Column(name="value", nullable=false)
 	public Float getValue() {
 		return value;
 	}
@@ -39,6 +40,7 @@ public class Payment {
 	}
 
 	@OneToOne
+	@JoinColumn(name="order_id", nullable=false)
 	public Order getOrder() {
 		return order;
 	}
@@ -48,7 +50,7 @@ public class Payment {
 	}
 
 	@ManyToOne
-	@JoinColumn(name="cpf")
+	@JoinColumn(name="manager_cpf")
 	public User getApprovalManager() {
 		return approvalManager;
 	}

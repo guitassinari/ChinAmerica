@@ -33,7 +33,8 @@
 		
 		<mapping class="model.User"></mapping>
 		<mapping class="model.Product"></mapping>
-
+		<mapping class="model.Order"></mapping>
+		<mapping class="model.Payment"></mapping>
 
     </session-factory>
  
