@@ -7,6 +7,7 @@ import database.UserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -21,6 +22,7 @@ public class LoginAndSignupController implements Initializable {
 	@FXML private TextField cpfSignupField;
 	@FXML private PasswordField passwordSignupField;
 	@FXML private PasswordField confirmPasswordSignupField;
+	@FXML private CheckBox userType;
 	private RootController root;
 	
 	@FXML
@@ -59,7 +61,11 @@ public class LoginAndSignupController implements Initializable {
 		String confirmPassword = confirmPasswordSignupField.getText();
 		User client = new User();
 		UserDAO database = new UserDAO();
-		client.setUserType(UserType.CLIENT);
+		if(userType.isSelected()){
+			client.setUserType(UserType.MANAGER);
+		} else {
+			client.setUserType(UserType.CLIENT);
+		}
 		
 		try{
 

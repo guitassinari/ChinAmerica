@@ -5,18 +5,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
    <top>
       <HBox fx:id="buttonsMenu" prefHeight="43.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="openLoginSignupButton" mnemonicParsing="false" prefHeight="43.0" prefWidth="100.0" onAction="#showLoginAndSignup"  text="Login/Cadastro" />
+            <Button fx:id="openLoginSignupButton" mnemonicParsing="false" onAction="#showLoginAndSignup" prefHeight="43.0" prefWidth="100.0" text="Login/Cadastro" />
+            <Button fx:id="openProductEditionButton"  mnemonicParsing="false" onAction="#showProductEdition" prefHeight="47.0" prefWidth="85.0" text="Editar Produtos" />
             <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="85.0" text="Cardápio" />
-            <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="85.0" text="Promoções" />
             <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" text="O Restaurante" />
+            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="193.0" text="Aprovar pedidos/pagamentos" />
+            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" text="Perfil" />
+            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" text="Sair" />
          </children>
       </HBox>
    </top>
    <center>
-      <StackPane  fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
