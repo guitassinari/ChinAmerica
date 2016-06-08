@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Pane maxHeight="550.0" maxWidth="800.0" minHeight="550.0" minWidth="800.0" prefHeight="550.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="45.0" layoutY="20.0" prefHeight="54.0" prefWidth="241.0" text="Produto">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <TextField fx:id="productNameField" layoutX="137.0" layoutY="105.0" prefHeight="25.0" prefWidth="481.0" />
+            <Label layoutX="74.0" layoutY="107.0" prefHeight="21.0" prefWidth="49.0" text="Nome">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="74.0" layoutY="145.0" prefHeight="21.0" prefWidth="49.0" text="Preço">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="productPriceField" layoutX="137.0" layoutY="143.0" prefHeight="25.0" prefWidth="481.0" />
+            <Label layoutX="73.0" layoutY="179.0" prefHeight="21.0" prefWidth="78.0" text="Descriçao">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="productDescriptionField" layoutX="73.0" layoutY="207.0" prefHeight="185.0" prefWidth="547.0" />
+            <Button fx:id="saveChangesButton" layoutX="407.0" layoutY="488.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Salvar alterações" />
+            <Button fx:id="editProductButton" layoutX="681.0" layoutY="488.0" mnemonicParsing="false" text="Editar produto" />
+            <Button fx:id="deleteProductButton" layoutX="543.0" layoutY="488.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Deletar produto" />
+            <RadioButton fx:id="foodType" onAction="#setProductType" layoutX="199.0" layoutY="418.0" mnemonicParsing="false" selected="true" text="Comida">
+               <toggleGroup>
+                  <ToggleGroup fx:id="productType" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="dessertType" onAction="#setProductType" layoutX="376.0" layoutY="419.0" mnemonicParsing="false" text="Sobremesa" toggleGroup="$productType" />
+            <RadioButton fx:id="drinkType" onAction="#setProductType" layoutX="289.0" layoutY="419.0" mnemonicParsing="false" text="Bebida" toggleGroup="$productType" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
