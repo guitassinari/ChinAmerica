@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane fx:id="SignupPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="nameLoginField" layoutX="116.0" layoutY="86.0" prefHeight="34.0" prefWidth="368.0" promptText="Nome Completo" />
+      <TextField fx:id="lastnameLoginField" layoutX="116.0" layoutY="134.0" prefHeight="34.0" prefWidth="368.0" promptText="Sobrenome" />
+      <TextField fx:id="emailLoginField" layoutX="116.0" layoutY="185.0" prefHeight="34.0" prefWidth="368.0" promptText="E-mail" />
+      <TextField fx:id="adressLoginField" layoutX="116.0" layoutY="239.0" prefHeight="34.0" prefWidth="368.0" promptText="Endereço" />
+      <PasswordField fx:id="passwordSignupLoginField" layoutX="116.0" layoutY="288.0" prefHeight="34.0" prefWidth="368.0" promptText="Senha" />
+      <Text layoutX="116.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complete o cadastro com as suas informações">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="finishSignupButton" onAction="#finishSignupUser" layoutX="276.0" layoutY="343.0" mnemonicParsing="false" text="Finalizar" />
+   </children>
+</Pane>

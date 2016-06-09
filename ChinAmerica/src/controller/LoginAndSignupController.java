@@ -77,6 +77,7 @@ public class LoginAndSignupController implements Initializable {
 				database.addUser(client);
 				RootController.alert("Usuário cadastrado com sucesso!","Bem vindo ao ChinAmérica!",AlertType.CONFIRMATION);			
 				setLoggedUser(client);
+				root.showSignup();
 			}
 			
 		} catch (IllegalArgumentException ex){

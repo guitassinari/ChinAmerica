@@ -92,6 +92,22 @@ public class RootController extends Application implements Initializable {
 	}
 
 	@FXML
+	public void showSignup() {
+		clearStackPane();
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(RootController.class.getResource("../view/Signup.fxml"));
+			SignupController SignupController = new SignupController();
+			SignupController.setRoot(this);
+			loader.setController(SignupController);
+			Pane Signup = (Pane) loader.load();
+			stackPane.getChildren().add(Signup);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
 	public void showProductEdition() {
 		clearStackPane();
 		try {
