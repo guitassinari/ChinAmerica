@@ -39,6 +39,7 @@ public class RootController extends Application implements Initializable {
 	private Button signoutButton;
 	@FXML
 	private Button openedOrders;
+	
 	private Stage primaryStage;
 	private BorderPane rootWindow;
 
@@ -58,6 +59,7 @@ public class RootController extends Application implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		updateButtons();
 		showLoginAndSignup();
 	}
 
@@ -128,45 +130,39 @@ public class RootController extends Application implements Initializable {
 		stackPane.getChildren().clear();
 	}
 
-	private void updateButtonsMenu() {
+	private void updateButtons() {
 		// TODO: Remover todos os botões do menu
-		buttonsMenu.getChildren().removeAll();
-		showGeneralUserButtons();
 		if (loggedUser != null) {
+			disableGeneralButtons(false);
 			if (loggedUser.getUserType().equals(UserType.CLIENT)) {
-				showClientButtons();
+				disableClientButtons(false);
 			}
 
 			if (loggedUser.getUserType().equals(UserType.MANAGER)) {
-				showManagerButtons();
+				disableManagerButtons(false);
 			}
+		} else {
+			disableClientButtons(true);
+			disableManagerButtons(true);
+			disableGeneralButtons(true);
 		}
 	}
-
-	private void showGeneralUserButtons() {
-		// TODO Auto-generated method stub
-
+	
+	private void disableGeneralButtons(boolean value){
+		openProductEditionButton.setDisable(value);
+		profileButton.setDisable(value);
+		signoutButton.setDisable(value);
 	}
 
-	private void showClientButtons() {
-		profileButton = new Button("Perfil");
-		profileButton.setPrefHeight(47);
-		profileButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				showProfile();
-			}
-		});
-		buttonsMenu.getChildren().add(profileButton);
+	private void disableClientButtons(boolean value) {
+		
+	}
+	
+	private void disableManagerButtons(boolean value){
+		openedOrders.setDisable(value);
 	}
 
-	private void showManagerButtons() {
 
-	}
-
-	private void showProfile() {
-
-	}
 
 	public User getLoggedUser() {
 		return loggedUser;
@@ -174,7 +170,7 @@ public class RootController extends Application implements Initializable {
 
 	public void setLoggedUser(User newLoggedUser) {
 		loggedUser = newLoggedUser;
-		updateButtonsMenu();
+		updateButtons();
 	}
 
 	public static void alert(String alertTitle, String alertText, AlertType alertType) {
