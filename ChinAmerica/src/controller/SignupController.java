@@ -20,28 +20,43 @@ public class SignupController {
 	@FXML private TextField emailLoginField;
 	@FXML private TextField adressLoginField;
 	@FXML private PasswordField passwordSignupLoginField;
+	@FXML private PasswordField passwordConfirmSignupLoginField;
 	@FXML private Button finishSignupButton;
 	
 	private RootController root;
 	
+	//TODO : Salvar no banco de dados
+	private User user;
+		
 	@FXML
 	public void finishSignupUser(){
 	
-		User user;
 		user = root.getLoggedUser();
 		
-		if(nameLoginField.getText() != "" && passwordSignupLoginField.getText() != "" && adressLoginField.getText() != "" && emailLoginField.getText() != "" && lastnameLoginField.getText() != "" )
-		{
-			user.setPassword(passwordSignupLoginField.getText());
-			user.setName(nameLoginField.getText());
-			user.setAdress(adressLoginField.getText());
-			user.setEmail(emailLoginField.getText());
-			user.setLastname(lastnameLoginField.getText());
+		//TODO: Alertar usuário de erros	
+		if(fieldsAreValid()){
+			setUserFields();
 		}
 	}
+	
+	private void setUserFields(){
+		user.setPassword(passwordSignupLoginField.getText(), passwordConfirmSignupLoginField.getText());
+		user.setName(nameLoginField.getText());
+		user.setAdress(adressLoginField.getText());
+		user.setEmail(emailLoginField.getText());
+		user.setLastname(lastnameLoginField.getText());
+	}
+	
+	private boolean fieldsAreValid(){
+		return 
+		!nameLoginField.getText().isEmpty() &&
+		!passwordSignupLoginField.getText().isEmpty() &&
+		!passwordConfirmSignupLoginField.getText().isEmpty() &&
+		!adressLoginField.getText().isEmpty() &&
+		!emailLoginField.getText().isEmpty() &&
+		!lastnameLoginField.getText().isEmpty();
+	}
 
-	
-	
 	public void setLoggedUser(User loggedUser) {
 		root.setLoggedUser(loggedUser);
 	}

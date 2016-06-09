@@ -20,7 +20,7 @@ public class User {
 	private String lastname;
 	private String cpf;
 	private String email;
-	private String adress;
+	private String address;
 	private String password;
 	
 	public User(){
@@ -33,7 +33,7 @@ public class User {
 		this.lastname = lastname;
 		this.cpf = cpf;
 		this.email = email;
-		this.adress = adress;
+		this.address = adress;
 		this.password = password;
 	}
 
@@ -64,13 +64,13 @@ public class User {
 		this.email = email;
 	}
 
-	@Column(name = "adress")
+	@Column(name = "address")
 	public String getAdress() {
-		return adress;
+		return address;
 	}
 
 	public void setAdress(String adress) {
-		this.adress = adress;
+		this.address = adress;
 	}
 
 	@Column(name = "password", nullable = false)
