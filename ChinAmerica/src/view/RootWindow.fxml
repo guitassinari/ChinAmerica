@@ -15,7 +15,7 @@
             <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" text="O Restaurante" />
             <Button fx:id="openedOrders" mnemonicParsing="false" prefHeight="43.0" prefWidth="193.0" text="Aprovar pedidos/pagamentos" />
             <Button fx:id="profileButton" onAction="#showSignup" mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" text="Perfil" />
-            <Button fx:id="signoutButton" mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" text="Sair" />
+            <Button fx:id="signoutButton" onAction="#logout" mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" text="Sair" />
          </children>
       </HBox>
    </top>

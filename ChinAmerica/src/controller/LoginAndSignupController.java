@@ -61,6 +61,7 @@ public class LoginAndSignupController implements Initializable {
 		String confirmPassword = confirmPasswordSignupField.getText();
 		User client = new User();
 		UserDAO database = new UserDAO();
+		
 		if(userType.isSelected()){
 			client.setUserType(UserType.MANAGER);
 		} else {
@@ -82,7 +83,7 @@ public class LoginAndSignupController implements Initializable {
 			
 		} catch (IllegalArgumentException ex){
 			ex.printStackTrace();
-			RootController.alert("Dados inválidos!", "Verifique CPF e senha e tente novamente!", AlertType.WARNING);
+			RootController.alert("Dados inválidos!", "Verifique CPF e senha(deve ter mais do que 6 digitos)  e tente novamente!", AlertType.WARNING);
 		} catch (Exception ex){
 			ex.printStackTrace();
 			RootController.alert("OOPS!", "Algo deu errado! Entre em contato com nossos desenvolvedores para que eles demorem meses para resolver o problema", AlertType.ERROR);

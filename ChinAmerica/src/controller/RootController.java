@@ -161,6 +161,13 @@ public class RootController extends Application implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	@FXML
+	private void logout(){
+		loggedUser = null;
+		updateButtons();
+		showLoginAndSignup();
+	}
 
 	private void clearStackPane() {
 		stackPane.getChildren().clear();

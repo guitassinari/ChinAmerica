@@ -123,7 +123,7 @@ public class User {
 	}
 	
 	public static boolean isValidPassword(String password){
-		return password.length() > 0;
+		return password.length() > 6;
 	}
 	
    private static int calcularDigito(String str, int[] peso) {

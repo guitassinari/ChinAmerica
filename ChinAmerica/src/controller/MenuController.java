@@ -42,19 +42,18 @@ public class MenuController implements Initializable {
 		
 		Label label = new Label("Pratos");
 		label.setFont(new Font("Arial", 25));
-		
 		addRowToGrid(label, rowIndex);
 		rowIndex++;
 
-		
 		for(Product product : foods){
 			createProductRow(product, rowIndex);
 			rowIndex++;
 		}
 		
-		
 		label = new Label("Bebidas");
 		label.setFont(new Font("Arial", 25));
+		addRowToGrid(label, rowIndex);
+		rowIndex++;
 		for(Product product : drinks){
 			createProductRow(product, rowIndex);
 			rowIndex++;
@@ -63,6 +62,8 @@ public class MenuController implements Initializable {
 		
 		label = new Label("Sobremesas");
 		label.setFont(new Font("Arial", 25));
+		addRowToGrid(label, rowIndex);
+		rowIndex++;
 		for(Product product : desserts){
 			createProductRow(product, rowIndex);
 			rowIndex++;

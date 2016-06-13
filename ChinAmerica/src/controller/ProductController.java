@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import database.ProductDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
@@ -74,22 +75,32 @@ public class ProductController implements Initializable {
 
 	@FXML
 	public void saveProduct() {
-		if (product == null) {
-			product = new Product();
-		}
+		try{
+			if (product == null) {
+				product = new Product();
+			}
 
-		product.setName(productNameField.getText());
-		product.setPrice(Float.parseFloat(productPriceField.getText()));
-		product.setDescription(productDescriptionField.getText());
-		product.setProductType(productType);
-		
-		ProductDAO database = new ProductDAO();
-		
-		if(database.getProductByName(product.getName()) != null){
-			database.updateProduct(product);
-		} else {
-			database.addProduct(product);
+			product.setName(productNameField.getText());
+			product.setPrice(Float.parseFloat(productPriceField.getText()));
+			product.setDescription(productDescriptionField.getText());
+			product.setProductType(productType);
+			
+			ProductDAO database = new ProductDAO();
+			
+			if(database.getProductByName(product.getName()) != null){
+				database.updateProduct(product);
+			} else {
+				database.addProduct(product);
+			}
+			
+			RootController.alert("Sucesso","O produto foi salvo com sucesso!", AlertType.CONFIRMATION);
+		} catch (Exception e){
+			RootController.alert("ERRO","Houve algo errado! Contate nossos desenvolvedores para resolver o problema",AlertType.ERROR);
+			e.printStackTrace();
 		}
+		
+		
+		
 	}
 	
 	@FXML

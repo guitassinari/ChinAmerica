@@ -31,32 +31,41 @@ public class SignupController {
 		
 		//TODO: Alertar usuário de erros	
 		if(fieldsAreValid()){
-			setUserFields();
-			UserDAO database = new UserDAO();
-			database.updateUser(user);
+			try{
+				setUserFields();
+				UserDAO database = new UserDAO();
+				database.updateUser(user);
+				RootController.alert("Sucesso", "Seus dados foram salvos com sucesso!", AlertType.CONFIRMATION);	
+			} catch (Exception e){
+				RootController.alert("ERRO","Houve algo errado! Contate nossos desenvolvedores para resolver o problema",AlertType.ERROR);
+				e.printStackTrace();
+			}
+			
 		} else {
-			RootController.alert("ERRO", "ERRO", AlertType.ERROR);
+			RootController.alert("ERRO", "Os campos nome, sobrenome e endereço são obrigatorios.", AlertType.ERROR);
 		}
 		
 	}
 	
 	private void setUserFields(){
-		user.setPassword(passwordSignupLoginField.getText(), passwordConfirmSignupLoginField.getText());
+		if(!passwordConfirmSignupLoginField.getText().trim().isEmpty()){
+			user.setPassword(passwordSignupLoginField.getText(), passwordConfirmSignupLoginField.getText());
+		}
 		user.setName(nameLoginField.getText());
 		user.setAdress(adressLoginField.getText());
 		user.setEmail(emailLoginField.getText());
 		user.setLastname(lastnameLoginField.getText());
 	}
 	
-	//TODO: Testar melhor os fields
 	private boolean fieldsAreValid(){
-		return 
-		!nameLoginField.getText().isEmpty() &&
-		!passwordSignupLoginField.getText().isEmpty() &&
-		!passwordConfirmSignupLoginField.getText().isEmpty() &&
-		!adressLoginField.getText().isEmpty() &&
-		!emailLoginField.getText().isEmpty() &&
-		!lastnameLoginField.getText().isEmpty();
+		
+		if(!nameLoginField.getText().isEmpty() &&		!adressLoginField.getText().isEmpty() &&		!lastnameLoginField.getText().isEmpty()){
+			if(!passwordConfirmSignupLoginField.getText().trim().isEmpty() || !passwordSignupLoginField.getText().trim().isEmpty()){
+				return User.isValidPassword(passwordSignupLoginField.getText())		&&		passwordConfirmSignupLoginField.getText().equals(passwordSignupLoginField.getText());
+			}
+		}
+		
+		return true;
 	}
 
 	public void setLoggedUser(User loggedUser) {
