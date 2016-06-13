@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import model.Order;
+import model.OrderStatus;
 import model.OrderedProduct;
 import model.Product;
 import model.ProductType;
@@ -94,7 +95,12 @@ public class MenuController implements Initializable {
 			}
 		}
 		
-		//TODO: abrir pedido
+		order.setOrderedProducts(orderedProducts);
+		order.setOrderStatus(OrderStatus.WAITING_ORDER_APPROVAL);
+		order.setClient(root.getLoggedUser());
+		
+		root.setOrderParam(order);
+		root.showOrder();
 	}
 	
 	private void createProductRow(Product product, int rowIndex){

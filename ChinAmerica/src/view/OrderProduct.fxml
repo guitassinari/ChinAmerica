@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="50.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Label fx:id="productName" layoutX="14.0" layoutY="17.0" prefHeight="17.0" prefWidth="188.0" />
+      <Label fx:id="productQuantity" layoutX="222.0" layoutY="17.0" prefHeight="17.0" prefWidth="57.0" />
+      <Label fx:id="productPrice" layoutX="322.0" layoutY="17.0" prefHeight="17.0" prefWidth="66.0" />
+   </children>
+</AnchorPane>

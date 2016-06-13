@@ -14,11 +14,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import model.Order;
 import model.Product;
 import model.User;
 import model.UserType;
@@ -41,10 +41,11 @@ public class RootController extends Application implements Initializable {
 	private Button openedOrders;
 	@FXML
 	private Button menuButton;
-	
+
 	private Stage primaryStage;
 	private BorderPane rootWindow;
 
+	private Order orderParam;
 	private Product productParam;
 	private User loggedUser;
 
@@ -96,6 +97,23 @@ public class RootController extends Application implements Initializable {
 	}
 
 	@FXML
+	public void showOrder() {
+		clearStackPane();
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(RootController.class.getResource("../view/Order.fxml"));
+			OrderController orderController = new OrderController();
+			orderController.setRoot(this);
+			orderController.setOrder(orderParam);
+			loader.setController(orderController);
+			Pane orderView = (Pane) loader.load();
+			stackPane.getChildren().add(orderView);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
 	public void showSignup() {
 		clearStackPane();
 		try {
@@ -110,7 +128,7 @@ public class RootController extends Application implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
 	public void showProductEdition() {
 		clearStackPane();
@@ -127,14 +145,14 @@ public class RootController extends Application implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
-	public void showMenu(){
+	public void showMenu() {
 		clearStackPane();
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(RootController.class.getResource("../view/Menu.fxml"));
-			MenuController  menuController = new MenuController();
+			MenuController menuController = new MenuController();
 			menuController.setRoot(this);
 			loader.setController(menuController);
 			ScrollPane menu = (ScrollPane) loader.load();
@@ -165,22 +183,20 @@ public class RootController extends Application implements Initializable {
 			disableGeneralButtons(true);
 		}
 	}
-	
-	private void disableGeneralButtons(boolean value){
+
+	private void disableGeneralButtons(boolean value) {
 		openProductEditionButton.setDisable(value);
 		profileButton.setDisable(value);
 		signoutButton.setDisable(value);
 	}
 
 	private void disableClientButtons(boolean value) {
-		
+
 	}
-	
-	private void disableManagerButtons(boolean value){
+
+	private void disableManagerButtons(boolean value) {
 		openedOrders.setDisable(value);
 	}
-
-
 
 	public User getLoggedUser() {
 		return loggedUser;
@@ -205,6 +221,14 @@ public class RootController extends Application implements Initializable {
 
 	public void setProductParam(Product productParam) {
 		this.productParam = productParam;
+	}
+
+	public Order getOrderParam() {
+		return orderParam;
+	}
+
+	public void setOrderParam(Order orderParam) {
+		this.orderParam = orderParam;
 	}
 
 }

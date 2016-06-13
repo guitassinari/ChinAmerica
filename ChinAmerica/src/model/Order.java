@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ORDERS")
+@Table(name = "ORDERS")
 public class Order {
 
 	private Integer id;
@@ -25,13 +25,14 @@ public class Order {
 	private Payment payment;
 	private User approvalManager;
 	private List<OrderedProduct> orderedProducts;
-	
-	public Order(){
-		
+	private OrderStatus orderStatus;
+
+	public Order() {
+
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		return id;
 	}
@@ -40,9 +41,9 @@ public class Order {
 		this.id = id;
 	}
 
-	//TODO: Map correctly
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="client_cpf", nullable=false)
+	// TODO: Map correctly
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "client_cpf", nullable = false)
 	public User getClient() {
 		return client;
 	}
@@ -51,7 +52,7 @@ public class Order {
 		this.client = client;
 	}
 
-	@Column(name="description")
+	@Column(name = "description")
 	public String getDescription() {
 		return description;
 	}
@@ -60,8 +61,8 @@ public class Order {
 		this.description = description;
 	}
 
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="payment_id")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "payment_id")
 	public Payment getPayment() {
 		return payment;
 	}
@@ -71,7 +72,7 @@ public class Order {
 	}
 
 	@ManyToOne
-	@JoinColumn(name="manager_cpf")
+	@JoinColumn(name = "manager_cpf")
 	public User getApprovalManager() {
 		return approvalManager;
 	}
@@ -80,13 +81,22 @@ public class Order {
 		this.approvalManager = approvalManager;
 	}
 
-	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL )
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	public List<OrderedProduct> getOrderedProducts() {
 		return orderedProducts;
 	}
 
 	public void setOrderedProducts(List<OrderedProduct> orderedProducts) {
 		this.orderedProducts = orderedProducts;
+	}
+
+	@Column(name="status", nullable = false)
+	public OrderStatus getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
 }
