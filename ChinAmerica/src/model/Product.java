@@ -18,6 +18,7 @@ public class Product {
 	private String description;
 	private ProductType productType;
 	private Float price;
+	private Integer quantity;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -64,6 +65,14 @@ public class Product {
 
 	public void setPrice(Float price) {
 		this.price = price;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 }

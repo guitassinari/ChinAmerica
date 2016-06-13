@@ -10,9 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,7 +24,7 @@ public class Order {
 	private String description;
 	private Payment payment;
 	private User approvalManager;
-	private List<Product> orderedProducts;
+	private List<OrderedProduct> orderedProducts;
 	
 	public Order(){
 		
@@ -81,15 +80,12 @@ public class Order {
 		this.approvalManager = approvalManager;
 	}
 
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-    @JoinTable(name="ordered_products",
-    	joinColumns = {@JoinColumn(name="product_id",nullable=false)},
-    	inverseJoinColumns = {@JoinColumn(name="order_id",nullable=false)})
-	public List<Product> getOrderedProducts() {
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL )
+	public List<OrderedProduct> getOrderedProducts() {
 		return orderedProducts;
 	}
 
-	public void setOrderedProducts(List<Product> orderedProducts) {
+	public void setOrderedProducts(List<OrderedProduct> orderedProducts) {
 		this.orderedProducts = orderedProducts;
 	}
 

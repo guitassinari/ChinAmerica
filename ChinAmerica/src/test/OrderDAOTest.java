@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import database.OrderDAO;
 import model.Order;
+import model.OrderedProduct;
 import model.Product;
 import model.ProductType;
 import model.User;
@@ -17,6 +18,8 @@ public class OrderDAOTest {
 
 	@Test
 	public void addGetAndDeleteTest() {
+		Order testOrder = new Order();
+
 		User orderer = new User();
 		String cpf = "02364001005";
 		String password = "teste";
@@ -25,7 +28,7 @@ public class OrderDAOTest {
 		orderer.setPassword(password);
 		orderer.setUserType(userType);
 		
-		List<Product> products = new ArrayList<Product>();
+		List<OrderedProduct> orderedProducts  = new ArrayList<OrderedProduct>();
 		
 		String productName1 = "produto 1";
 		Float price1 = 1f;
@@ -35,6 +38,12 @@ public class OrderDAOTest {
 		product1.setPrice(price1);
 		product1.setProductType(productType1);
 		
+		OrderedProduct orderedProduct1 = new OrderedProduct();
+		orderedProduct1.setProduct(product1);
+		orderedProduct1.setOrder(testOrder);
+		orderedProduct1.setPrice(1f);
+		orderedProduct1.setQuantity(1);
+		
 		String productName2 = "produto 2";
 		Float price2 = 2f;
 		ProductType productType2 = ProductType.FOOD;
@@ -43,12 +52,17 @@ public class OrderDAOTest {
 		product2.setPrice(price2);
 		product2.setProductType(productType2);
 		
-		products.add(product1);
-		products.add(product2);
+		OrderedProduct orderedProduct2 = new OrderedProduct();
+		orderedProduct2.setProduct(product2);
+		orderedProduct2.setOrder(testOrder);
+		orderedProduct2.setPrice(1f);
+		orderedProduct2.setQuantity(1);
+		
+		orderedProducts.add(orderedProduct1);
+		orderedProducts.add(orderedProduct2);
 	
-		Order testOrder = new Order();
 		testOrder.setClient(orderer);
-		testOrder.setOrderedProducts(products);
+		testOrder.setOrderedProducts(orderedProducts);
 		
 		OrderDAO database = new OrderDAO();
 		

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="50.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <children>
+      <TextField fx:id="productQuantity" layoutX="738.0" layoutY="13.0" prefHeight="25.0" prefWidth="48.0" />
+      <Label fx:id="productName" layoutX="14.0" layoutY="12.0" prefHeight="17.0" prefWidth="325.0" style="-fx-underline: true;" textFill="#3700ff">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="productPrice" layoutX="379.0" layoutY="12.0" prefHeight="26.0" prefWidth="158.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

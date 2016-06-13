@@ -5,8 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,7 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -39,6 +39,8 @@ public class RootController extends Application implements Initializable {
 	private Button signoutButton;
 	@FXML
 	private Button openedOrders;
+	@FXML
+	private Button menuButton;
 	
 	private Stage primaryStage;
 	private BorderPane rootWindow;
@@ -121,6 +123,22 @@ public class RootController extends Application implements Initializable {
 			loader.setController(productController);
 			Pane productEdition = (Pane) loader.load();
 			stackPane.getChildren().add(productEdition);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void showMenu(){
+		clearStackPane();
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(RootController.class.getResource("../view/Menu.fxml"));
+			MenuController  menuController = new MenuController();
+			menuController.setRoot(this);
+			loader.setController(menuController);
+			ScrollPane menu = (ScrollPane) loader.load();
+			stackPane.getChildren().add(menu);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
