@@ -95,5 +95,20 @@ public class OrderDAO extends DAO {
         }
         return order;
     }
+    
+    public List<Order> getOrdersToAprove() {
+        List<Order> products = new ArrayList<Order>();
+        Transaction trns = null;
+        Session session = initSession();
+        try {
+            trns = session.beginTransaction();
+            products = session.createQuery("from Order o where o.status in (6,7)").list();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            endSession();
+        }
+        return products;
+    }
     	
 }

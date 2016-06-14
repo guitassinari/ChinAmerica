@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="50.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="28.0" layoutY="17.0" text="Valor a pagar :" />
+      <Label fx:id="orderStatus" layoutX="411.0" layoutY="19.0" prefHeight="17.0" prefWidth="221.0" />
+      <Label fx:id="orderValue" layoutX="116.0" layoutY="17.0" prefHeight="17.0" prefWidth="145.0" />
+      <Label layoutX="358.0" layoutY="19.0" text="Status : " />
+      <Button fx:id="openOrderButton" layoutX="660.0" layoutY="13.0" mnemonicParsing="false" onAction="#openOrder" prefHeight="25.0" prefWidth="108.0" text="Abrir Pedido" />
+   </children>
+</AnchorPane>

@@ -41,7 +41,7 @@
             <Button fx:id="approveOrder" layoutX="463.0" layoutY="336.0" mnemonicParsing="false" onAction="#approveOrder" text="Aprovar Pedido" />
             <Button fx:id="confirmOrder" layoutX="29.0" layoutY="336.0" mnemonicParsing="false" onAction="#confirmOrder" text="Confirmar Pedido" />
             <Button fx:id="seePayment" layoutX="142.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Ver Pagamento" />
-            <Button fx:id="payOrder" layoutX="260.0" layoutY="336.0" mnemonicParsing="false" text="Pagar Pedido" />
+            <Button fx:id="payOrder" layoutX="260.0" layoutY="336.0" mnemonicParsing="false" text="Pagar Pedido" onAction="#payOrder" />
             <Button fx:id="reproveOrder" layoutX="460.0" layoutY="371.0" mnemonicParsing="false" onAction="#reproveOrder" text="Reprovar Pedido" />
             <Button fx:id="cancelOrder" layoutX="27.0" layoutY="371.0" mnemonicParsing="false" onAction="#cancelOrder" text="Cancelar Pedido" />
             <Label layoutX="33.0" layoutY="263.0" text="Observações" />

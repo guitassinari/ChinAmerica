@@ -99,4 +99,12 @@ public class Order {
 		this.orderStatus = orderStatus;
 	}
 
+	public Float totalPrice(){
+		float total = 0f;
+		for(OrderedProduct product : orderedProducts){
+			total += product.getPrice()*product.getQuantity();
+		}
+		
+		return total;
+	}
 }

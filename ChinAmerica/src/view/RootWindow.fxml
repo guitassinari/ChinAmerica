@@ -10,12 +10,12 @@
       <HBox fx:id="buttonsMenu" prefHeight="43.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="openLoginSignupButton" mnemonicParsing="false" onAction="#showLoginAndSignup" prefHeight="43.0" prefWidth="100.0" text="Login/Cadastro" />
-            <Button fx:id="openProductEditionButton"  mnemonicParsing="false" onAction="#showProductEdition" prefHeight="47.0" prefWidth="85.0" text="Editar Produtos" />
-            <Button fx:id="menuButton" onAction="#showMenu" mnemonicParsing="false" prefHeight="47.0" prefWidth="85.0" text="Cardápio" />
+            <Button fx:id="openProductEditionButton" mnemonicParsing="false" onAction="#showProductEdition" prefHeight="43.0" prefWidth="128.0" text="Editar Produtos" />
+            <Button fx:id="menuButton" mnemonicParsing="false" onAction="#showMenu" prefHeight="47.0" prefWidth="85.0" text="Cardápio" />
             <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" text="O Restaurante" />
-            <Button fx:id="openedOrders" mnemonicParsing="false" prefHeight="43.0" prefWidth="193.0" text="Aprovar pedidos/pagamentos" />
-            <Button fx:id="profileButton" onAction="#showSignup" mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" text="Perfil" />
-            <Button fx:id="signoutButton" onAction="#logout" mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" text="Sair" />
+            <Button fx:id="openedOrders" mnemonicParsing="false" onAction="#showOpenedOrders" prefHeight="43.0" prefWidth="193.0" text="Aprovar pedidos/pagamentos" />
+            <Button fx:id="profileButton" mnemonicParsing="false" onAction="#showSignup" prefHeight="43.0" prefWidth="109.0" text="Perfil" />
+            <Button fx:id="signoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="43.0" prefWidth="109.0" text="Sair" />
          </children>
       </HBox>
    </top>

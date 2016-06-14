@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -162,6 +163,37 @@ public class RootController extends Application implements Initializable {
 		}
 	}
 	
+	public void showOpenedOrders(){
+		clearStackPane();
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(RootController.class.getResource("../view/OpenedOrders.fxml"));
+			OpenedOrdersController openedOrdersController = new OpenedOrdersController();
+			openedOrdersController.setRoot(this);
+			loader.setController(openedOrdersController);
+			ScrollPane menu = (ScrollPane) loader.load();
+			stackPane.getChildren().add(menu);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void showPayment(){
+		clearStackPane();
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(RootController.class.getResource("../view/Payment.fxml"));
+			PaymentController paymentController = new PaymentController();
+			paymentController.setRoot(this);
+			paymentController.setOrder(orderParam);
+			loader.setController(paymentController);
+			AnchorPane menu = (AnchorPane) loader.load();
+			stackPane.getChildren().add(menu);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@FXML
 	private void logout(){
 		loggedUser = null;
@@ -192,7 +224,6 @@ public class RootController extends Application implements Initializable {
 	}
 
 	private void disableGeneralButtons(boolean value) {
-		openProductEditionButton.setDisable(value);
 		profileButton.setDisable(value);
 		signoutButton.setDisable(value);
 	}
@@ -203,6 +234,7 @@ public class RootController extends Application implements Initializable {
 
 	private void disableManagerButtons(boolean value) {
 		openedOrders.setDisable(value);
+		openProductEditionButton.setDisable(value);
 	}
 
 	public User getLoggedUser() {

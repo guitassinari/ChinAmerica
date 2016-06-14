@@ -65,7 +65,6 @@ public class ProductController implements Initializable {
 		productPriceField.setDisable(value);
 		productDescriptionField.setDisable(value);
 		saveChangesButton.setDisable(value);
-		editProductButton.setDisable(value);
 		deleteProductButton.setDisable(value);
 		foodType.setDisable(value);
 		drinkType.setDisable(value);

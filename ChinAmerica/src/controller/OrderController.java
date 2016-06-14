@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.TextArea;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -32,9 +32,6 @@ public class OrderController implements Initializable {
 
 	@FXML
 	private Button reproveOrder;
-
-	@FXML
-	private Button seePayment;
 
 	@FXML
 	private Button confirmOrder;
@@ -79,14 +76,14 @@ public class OrderController implements Initializable {
 
 	private void updateButtons() {
 		if (root.getLoggedUser().getUserType().equals(UserType.MANAGER)) {
-			payOrder.setDisable(true);
-			cancelOrder.setDisable(true);
-			confirmOrder.setDisable(true);
-			seePayment.setDisable(true);
+//			payOrder.setDisable(true);
+//			cancelOrder.setDisable(true);
+//			confirmOrder.setDisable(true);
 		} else {
 			approveOrder.setDisable(true);
 			reproveOrder.setDisable(true);
 		}
+		
 	}
 	
 	@FXML
@@ -94,7 +91,10 @@ public class OrderController implements Initializable {
 		try{
 			OrderDAO database = new OrderDAO();
 			order.setDescription(orderDescription.getText());
-			database.updateOrder(order);
+			for(OrderedProduct orderedProduct : order.getOrderedProducts()){
+				orderedProduct.setOrder(order);
+			}
+			database.addOrder(order);
 			RootController.alert("Sucesso","Pedido salvo com sucesso! Aguarde a aprovação pelo gerente.",AlertType.CONFIRMATION);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -130,11 +130,18 @@ public class OrderController implements Initializable {
 		}
 
 	}
+	
+	@FXML
+	private void payOrder(){
+		root.setOrderParam(order);
+		root.showPayment();
+	}
 
 	@FXML
 	private void approveOrder() {
 		try {
 			order.setOrderStatus(OrderStatus.ORDER_APPROVED);
+			order.setApprovalManager(root.getLoggedUser());
 			OrderDAO database = new OrderDAO();
 			database.updateOrder(order);			
 			RootController.alert("Sucesso","Pedido aprovado com sucesso!",AlertType.CONFIRMATION);
