@@ -20,23 +20,21 @@ import model.UserType;
 public class ProductController implements Initializable {
 
 	@FXML
-	TextField productNameField;
+	private TextField productNameField;
 	@FXML
-	TextField productPriceField;
+	private TextField productPriceField;
 	@FXML
-	TextArea productDescriptionField;
+	private TextArea productDescriptionField;
 	@FXML
-	Button saveChangesButton;
+	private Button saveChangesButton;
 	@FXML
-	Button editProductButton;
+	private Button deleteProductButton;
 	@FXML
-	Button deleteProductButton;
+	private RadioButton foodType;
 	@FXML
-	RadioButton foodType;
+	private RadioButton drinkType;
 	@FXML
-	RadioButton drinkType;
-	@FXML
-	RadioButton dessertType;
+	private 	RadioButton dessertType;
 
 	private ProductType productType;
 	private Product product;
