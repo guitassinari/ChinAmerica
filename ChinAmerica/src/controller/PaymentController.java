@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import database.OrderDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.Order;
@@ -61,6 +62,7 @@ public class PaymentController implements Initializable {
 		
 		OrderDAO database = new OrderDAO();
 		database.updateOrder(order);
+		RootController.alert("Pedido pago com sucesso!", "Pagamento realizado. Aguarde aprovação do gerente.", AlertType.CONFIRMATION);
 	}
 	
 	@FXML
@@ -68,6 +70,7 @@ public class PaymentController implements Initializable {
 		order.setOrderStatus(OrderStatus.PAYMENT_APPROVED);
 		OrderDAO database = new OrderDAO();
 		database.updateOrder(order);
+		RootController.alert("Pagamento aprovado com sucesso!", "Pagamento aprovado", AlertType.CONFIRMATION);
 	}	
 	
 	@FXML
@@ -75,6 +78,8 @@ public class PaymentController implements Initializable {
 		order.setOrderStatus(OrderStatus.PAYMENT_REFUSED);
 		OrderDAO database = new OrderDAO();
 		database.updateOrder(order);
+		RootController.alert("Pagamento reprovado com sucesso!", "Pagamento reprovado", AlertType.ERROR);
+
 	}
 
 	public RootController getRoot() {

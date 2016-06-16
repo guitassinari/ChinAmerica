@@ -1,15 +1,19 @@
 package controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import database.UserDAO;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import model.User;
 
-public class SignupController {
+public class SignupController implements Initializable{
 	
 	@FXML private Pane SignupPane;
 	@FXML private TextField nameLoginField;
@@ -78,6 +82,19 @@ public class SignupController {
 
 	public void setRoot(RootController root) {
 		this.root = root;
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		UserDAO database = new UserDAO();
+		User user = database.getUserByCpf(root.getLoggedUser().getCpf());
+		
+		nameLoginField.setText(user.getName());
+		lastnameLoginField.setText(user.getLastname());
+		emailLoginField.setText(user.getEmail());
+		adressLoginField.setText(user.getAdress());
+		
 	}
 	
 }

@@ -42,10 +42,8 @@ public class RootController extends Application implements Initializable {
 	private Button openedOrders;
 	@FXML
 	private Button menuButton;
-
 	private Stage primaryStage;
 	private BorderPane rootWindow;
-
 	private Order orderParam;
 	private Product productParam;
 	private User loggedUser;

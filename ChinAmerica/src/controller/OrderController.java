@@ -61,6 +61,7 @@ public class OrderController implements Initializable {
 
 		orderClientName.setText(order.getClient().getName());
 		orderStatus.setText(order.getOrderStatus().toString());
+		orderDescription.setText(order.getDescription());
 		int rowIndex = 0;
 		
 		Float total = 0f;
